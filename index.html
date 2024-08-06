@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR Shopping Experience</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>VR Shopping Experience</h1>
+    </header>
+    <main>
+        <a-scene>
+            <a-assets>
+                <!-- Load product images here -->
+                <img id="product1" src="{{ url_for('static', filename='images/product1.jpg') }}">
+                <img id="product2" src="{{ url_for('static', filename='images/product2.jpg') }}">
+                <!-- Add more products as needed -->
+            </a-assets>
+
+            <a-sky color="#ECECEC"></a-sky>
+            
+            <a-plane color="#7BC8A4" rotation="-90 0 0" width="30" height="30"></a-plane>
+            
+            <a-entity camera look-controls position="0 1.6 0">
+                <a-entity cursor="fuse: true; fuseTimeout: 500"
+                          position="0 0 -1"
+                          geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                          material="color: black; shader: flat">
+                </a-entity>
+            </a-entity>
+            
+            <a-box src="#product1" position="-1 0.5 -3" rotation="0 45 0" scale="0.5 0.5 0.5"></a-box>
+            <a-box src="#product2" position="1 0.5 -3" rotation="0 45 0" scale="0.5 0.5 0.5"></a-box>
+            <!-- Add more products as needed -->
+
+            <a-text value="Product 1" align="center" position="-1 1.5 -3" color="#000"></a-text>
+            <a-text value="Product 2" align="center" position="1 1.5 -3" color="#000"></a-text>
+            <!-- Add more product labels as needed -->
+        </a-scene>
+    </main>
+</body>
+</html>
